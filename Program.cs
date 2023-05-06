@@ -46,29 +46,40 @@ internal class Program
         Show(lines, 0);
     }
 
+    /// <summary>
+    /// Recursive method to process a list of character combinations
+    /// </summary>
+    /// <param name="list">List contains the string of characters in each line</param>
+    /// <param name="listIndex">index into the list identifying the current line</param>
     static void Show(List<string> list, int listIndex)
     {
         var line = list[listIndex];
         ptrs[listIndex] = 0;
+
+        // Iterate the charaters in the line
         for (int i = 0; i < line.Length; i++)
         {
+            // If not yet at the end of the list...
             if (listIndex < list.Count - 1)
             {
+                // Move to the next line and do the same with it
                 listIndex++;
                 Show(list, listIndex);
 
-                // Set the pointers for lower lines to zero
+                // Upon return, all characters for lower lines have been interated
+                // so set the pointers for those lines to zero
                 for (int k = listIndex; k < list.Count; k++)
                 {
                     ptrs[k] = 0;
                 }
-                // Next character
+
+                // Back up to the previous line and continue
                 listIndex--;
             }
             else
             {
-                // We've reached the bottom of the list, so
-                // display the results from each line
+                // Reached the end of the lines, so
+                // display the current character from each line
                 StringBuilder sb = new();
                 for (int j = 0; j < list.Count; j++)
                 {
@@ -77,9 +88,10 @@ internal class Program
                 Console.WriteLine(sb);
             }
 
+            // If not yet at the end of the string...
             if (ptrs[listIndex] < line.Length - 1)
             {
-                // Advance the current pointer
+                // Advance the current pointer to the next character
                 ptrs[listIndex]++;
             }
         }
