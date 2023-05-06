@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Permute": {
-      "commandName": "Project",
-      "commandLineArgs": "E:\\Source\\GitHub\\Permute\\input.txt"
+      "commandName": "Project"
     }
   }
 }

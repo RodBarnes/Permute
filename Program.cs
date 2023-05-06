@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿using Common;
 using System.Text;
 
 namespace Permute;
@@ -10,13 +10,16 @@ internal class Program
 
     static void Main(string[] args)
     {
+        var assy = new AssemblyInfo();
+        var ver = assy.AssemblyVersion;
+
         // Get the path for the file to read containing the characters
         if (args.Length < 1)
         {
-            Console.WriteLine("Syntax: permute <path_to_file>");
+            Console.WriteLine($"{assy.Title} v{assy.AssemblyVersion}");
+            Console.WriteLine($"Syntax: {assy.Title} <path_to_file>");
             Console.WriteLine("'<path_to_file>' should contain the list of characters for each position, each list of characters on a separate line.");
-            Console.WriteLine("A list of all possible combinations of the characters in the file is the output.");
-            Console.WriteLine("You can redirect output of the program to a file.  For example:  'permute C:\\Temp\\input.txt > permute.txt'");
+            Console.WriteLine("A list of all possible combinations of the characters in the file is the output.  You can redirect output of the program to a file.  For example:  'permute C:\\Temp\\input.txt > permute.txt'");
             return;
         }
 
@@ -82,4 +85,5 @@ internal class Program
             }
         }
     }
+
 }
