@@ -11,15 +11,14 @@ internal class Program
     static void Main(string[] args)
     {
         var assy = new AssemblyInfo();
-        var ver = assy.AssemblyVersion;
 
         // Get the path for the file to read containing the characters
         if (args.Length < 1)
         {
-            Console.WriteLine($"{assy.Title} v{assy.AssemblyVersion}");
+            Console.WriteLine($"{assy.Title} v{assy.MajorVersion}.{assy.MinorVersion}");
             Console.WriteLine($"Syntax: {assy.Title} <path_to_file>");
-            Console.WriteLine("'<path_to_file>' should contain the list of characters for each position, each list of characters on a separate line.");
-            Console.WriteLine("A list of all possible combinations of the characters in the file is the output.  You can redirect output of the program to a file.  For example:  'permute C:\\Temp\\input.txt > permute.txt'");
+            Console.WriteLine("The specified file is read and a list of all possible combinations of the characters in the file is the output.  Output can be redirected to a file -- for example:  'permute C:\\Temp\\input.txt > permute.txt'.");
+            Console.WriteLine("The specified file must contain a list of characters for each position, with each list on a separate line, each line representing the position in the string; i.e., 1st line are characters for 1st position, 2nd line are characters for 2nd position, etc.  Samples are included with the original program as 'simple.txt' and 'complext.txt'.");
             return;
         }
 
