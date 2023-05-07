@@ -43,7 +43,7 @@ internal class Program
         }
         ptrs = new int[lines.Count];
 
-        Show(lines, 0);
+        ShowChars(lines, 0);
     }
 
     /// <summary>
@@ -51,7 +51,7 @@ internal class Program
     /// </summary>
     /// <param name="list">List contains the string of characters in each line</param>
     /// <param name="listIndex">index into the list identifying the current line</param>
-    static void Show(List<string> list, int listIndex)
+    static void ShowChars(List<string> list, int listIndex)
     {
         var line = list[listIndex];
         ptrs[listIndex] = 0;
@@ -64,7 +64,7 @@ internal class Program
             {
                 // Move to the next line and do the same with it
                 listIndex++;
-                Show(list, listIndex);
+                ShowChars(list, listIndex);
 
                 // Upon return, all characters for lower lines have been interated
                 // so set the pointers for those lines to zero
