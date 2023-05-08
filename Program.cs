@@ -5,7 +5,7 @@ namespace Permute;
 
 internal class Program
 {
-    static int[] ptrs;
+    static int[] currentPtr;
     static List<string> lines = new();
 
     static void Main(string[] args)
@@ -41,8 +41,11 @@ internal class Program
                 lines.Add(sr.ReadLine());
             }
         }
-        ptrs = new int[lines.Count];
 
+        // Create an array of pointers, one for each line
+        currentPtr = new int[lines.Count];
+
+        // Start the process
         ShowChars(lines, 0);
     }
 
@@ -54,9 +57,9 @@ internal class Program
     static void ShowChars(List<string> list, int listIndex)
     {
         var line = list[listIndex];
-        ptrs[listIndex] = 0;
+        currentPtr[listIndex] = 0;
 
-        // Iterate the charaters in the line
+        // Iterate the charaters in the current line
         for (int i = 0; i < line.Length; i++)
         {
             // If not yet at the end of the list...
@@ -66,35 +69,31 @@ internal class Program
                 listIndex++;
                 ShowChars(list, listIndex);
 
-                // Upon return, all characters for lower lines have been interated
-                // so set the pointers for those lines to zero
-                for (int k = listIndex; k < list.Count; k++)
-                {
-                    ptrs[k] = 0;
-                }
+                // Upon return, reset this line's pointer
+                // so it will be ready for the next run
+                currentPtr[listIndex] = 0;
 
                 // Back up to the previous line and continue
                 listIndex--;
             }
             else
             {
-                // Reached the end of the lines, so
+                // Reached the end of the list, so
                 // display the current character from each line
                 StringBuilder sb = new();
                 for (int j = 0; j < list.Count; j++)
                 {
-                    sb.Append(list[j][ptrs[j]]);
+                    sb.Append(list[j][currentPtr[j]]);
                 }
                 Console.WriteLine(sb);
             }
 
             // If not yet at the end of the string...
-            if (ptrs[listIndex] < line.Length - 1)
+            if (currentPtr[listIndex] < line.Length - 1)
             {
                 // Advance the current pointer to the next character
-                ptrs[listIndex]++;
+                currentPtr[listIndex]++;
             }
         }
     }
-
 }

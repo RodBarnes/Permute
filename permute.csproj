@@ -6,6 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <ApplicationIcon>Resources\permute.ico</ApplicationIcon>
+	<Version>1.0.1.0</Version>
+	<Company>Advanced Applications</Company>
+	<Product>permute</Product>
+	<Description>Givena file with a list of strings, generate all the possible combinations.</Description>
+	<Copyright>Copyright © 2023 Rod Barnes</Copyright>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +25,10 @@
   <ItemGroup>
     <None Update="complex.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
     <None Update="simple.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
