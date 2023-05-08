@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023 Rod Barnes
+ * See the LICENSE.txt file in the project root for specific restrictions.
+ */
 ﻿using Common;
 using System.Text;
 

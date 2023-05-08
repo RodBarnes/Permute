@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <ApplicationIcon>Resources\permute.ico</ApplicationIcon>
-	<Version>1.0.1.0</Version>
+	<Version>1.1</Version>
 	<Company>Advanced Applications</Company>
 	<Product>permute</Product>
 	<Description>Givena file with a list of strings, generate all the possible combinations.</Description>
